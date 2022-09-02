@@ -22,3 +22,8 @@ div {
   text-align: center;
   vertical-align: middle;
 }
+
+.boardSq {
+  font-family: 'Permanent Marker', cursive;
+  cursor: pointer;
+}
