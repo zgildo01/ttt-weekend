@@ -1,5 +1,14 @@
 /*-------------------------------- Constants --------------------------------*/
-
+const winningCombos = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6],
+]
 
 
 /*---------------------------- Variables (state) ----------------------------*/
@@ -8,10 +17,11 @@ let board, turn, winner;
 
 /*------------------------ Cached Element References ------------------------*/
 const squareEls = document.querySelectorAll('.boardSq');
-const messageEl = document.querySelector('#message')
+const messageEl = document.querySelector('#message');
+const gameBoard = document.querySelector('#board');
 
 /*----------------------------- Event Listeners -----------------------------*/
-
+gameBoard.addEventListener('click', handleClick);
 
 
 /*-------------------------------- Functions --------------------------------*/
@@ -22,6 +32,41 @@ function init() {
   turn = 1;
   winner = null;
 
+  render();
+}
+
+function render() {
+  board.forEach(function(element, idx) {
+    const currentSquare = squareEls[idx];
+    
+  if(turn == 1) {
+    currentSquare.textContent = 'x';
+  } else if(turn == 0) {
+    currentSquare.textContent = 'o';
+  } else if(turn == null) {
+    currentSquare.textContent = '';
+  }
+
+  })
+  if(winner == null) {
+    messageEl.textContent = `Currently: Player ${turn}'s turn!`;
+  } else if (winner == T) {
+    messageEl.textContent = `Players have tied!`;
+  } else {
+    messageEl.textContent = `Congratualations, Player ${turn} has won!`;
+  }
+
+}
+
+function handleClick(evt) {
+  const sqIdx = squareEls.getAttribute('id');
+  if (!sqIdx.textContent === '' || !winner === null) {
+    return;
+  }
+  turn *= -1;
+  board[sqIdx] = turn;
+
+  getWinner();
   render();
 }
 
