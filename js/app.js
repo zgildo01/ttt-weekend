@@ -70,6 +70,24 @@ function handleClick(evt) {
   render();
 }
 
+function getWinner() {
+  for(let i = 0; i < winConditions.length; i++) {
+    const condition = winConditions[i];
+    const sq1 = board[condition[0]];
+    const sq2 = board[condition[1]];
+    const sq3 = board[condition[2]];
+    const winValue = Math.abs((sq1 + sq2 + sq3));
+    if (winValue === 3) {
+      winner = sq1;
+    } else {
+      winner = 'T';
+    }
+    if (!winValue === 3 || !winner === 'T') {
+      return null;
+    }
+  }
+}
+
 /*-------------------------------- Pseudocode --------------------------------*/
 // Step 1 - Define the required variables used to track the state of the game
 
