@@ -72,19 +72,16 @@ function handleClick(evt) {
 }
 
 function getWinner() {
-  for(let i = 0; i < winConditions.length; i++) {
-    const condition = winConditions[i];
-    const sq1 = board[condition[0]];
-    const sq2 = board[condition[1]];
-    const sq3 = board[condition[2]];
+  for(let i = 0; i < winningCombos.length; i++) {
+    const combo = winningCombos[i];
+    const sq1 = board[combo[0]];
+    const sq2 = board[combo[1]];
+    const sq3 = board[combo[2]];
     const winValue = Math.abs((sq1 + sq2 + sq3));
     if (winValue === 3) {
       winner = turn;
-    } else {
+    } else if (!board === null){
       winner = 'T';
-    }
-    if (!winValue === 3 || !winner === 'T') {
-      return null;
     }
   }
 }
