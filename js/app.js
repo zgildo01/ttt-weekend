@@ -46,13 +46,13 @@ function render() {
     currentSquare.textContent = 'x';
   } else if(element == -1) {
     currentSquare.textContent = 'o';
-  } else if(element == null) {
+  } else if(element === null) {
     currentSquare.textContent = null;
   }
   })
 
-  if(winner == null) {
-    return `Currently: Player ${turn}'s turn!`
+  if(winner === null) {
+    messageEl.textContent = `Currently: Player ${turn}'s turn!`
   } else if (winner == T) {
     messageEl.textContent = `Players have tied!`;
   } else {
@@ -84,7 +84,7 @@ function getWinner() {
     const winValue = Math.abs((sq1 + sq2 + sq3));
     if (winValue === 3) {
       winner = turn;
-    } else if (!board === null){
+    } else if (!board.includes(null)){
       winner = 'T';
     }
   }
