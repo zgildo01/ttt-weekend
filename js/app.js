@@ -23,8 +23,9 @@ const resetBtnEl = document.querySelector('#reset-button');
 /*----------------------------- Event Listeners -----------------------------*/
 squareEls.forEach(function(square) {
   square.addEventListener('click', handleClick)
-})
-resetBtnEl.addEventListener('click', init)
+});
+
+resetBtnEl.addEventListener('click', init);
 
 /*-------------------------------- Functions --------------------------------*/
 init();
@@ -43,7 +44,7 @@ function render() {
 
   if(element == 1) {
     currentSquare.textContent = 'x';
-  } else if(element == 0) {
+  } else if(element == -1) {
     currentSquare.textContent = 'o';
   } else if(element == null) {
     currentSquare.textContent = null;
@@ -62,11 +63,14 @@ function render() {
 }
 
 function handleClick(evt) {
-
-  const sqIdx = squareEls.getAttribute('id');
-  if (!sqIdx.textContent === '' || !winner === null) {
+  if(!board[+(evt.target.id.replace('sq', ''))] === null)  {
     return;
+  } else if (!winner === null) {
+    return;
+  } else {
+    board[+(evt.target.id.replace('sq', ''))] = turn;
   }
+
   turn *= -1;
   render();
 }
