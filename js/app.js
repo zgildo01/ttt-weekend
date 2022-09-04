@@ -53,7 +53,7 @@ function render() {
 
   if(winner === null) {
     messageEl.textContent = `Currently: Player ${turn}'s turn!`
-  } else if (winner == T) {
+  } else if (winner == 'T') {
     messageEl.textContent = `Players have tied!`;
   } else {
     messageEl.textContent = `Congratualations, Player ${turn} has won!`;
