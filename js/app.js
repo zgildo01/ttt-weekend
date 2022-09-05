@@ -52,11 +52,11 @@ function render() {
   })
 
   if(winner === null) {
-    messageEl.textContent = `Currently: Player ${turn}'s turn!`
-  } else if (winner == 'T') {
+    messageEl.textContent = "Currently: " + player() + "'s turn!"
+  } else if (winner === 'T') {
     messageEl.textContent = `Players have tied!`;
   } else {
-    messageEl.textContent = `Congratualations, Player ${turn} has won!`;
+    messageEl.textContent = "Congratualations, Player " + player() + " has won!"
   }
 
   getWinner();
@@ -73,6 +73,16 @@ function handleClick(evt) {
 
   turn *= -1;
   render();
+}
+
+function player() {
+  let playerName;
+  if (turn === 1) {
+    playerName = 'Player 1';
+  } else {
+    playerName = 'Player 2';
+  }
+  return playerName;
 }
 
 function getWinner() {
