@@ -26,7 +26,7 @@ squareEls.forEach(function(square) {
   square.addEventListener('click', handleClick)
 });
 startBtnEl.addEventListener('click', init);
-resetBtnEl.addEventListener('click', init);
+resetBtnEl.addEventListener('click', reset);
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -40,65 +40,72 @@ function init() {
   render();
 }
 
+function reset() {
+  board = [null, null, null, null, null, null, null, null, null];
+  turn = 1;
+  winner = null;
+
+  resetBtnEl.style.display = "none";
+  startBtnEl.style.display = "initial";
+  render();
+}
+
 function render() {
   board.forEach(function(element, idx) {
     const currentSquare = squareEls[idx];
 
-  if(element == 1) {
-    currentSquare.textContent = 'x';
-  } else if(element == -1) {
-    currentSquare.textContent = 'o';
+  if(element === 1) {
+    currentSquare.textContent = 'X';
+  } else if(element === -1) {
+    currentSquare.textContent = 'O';
   } else if(element === null) {
-    currentSquare.textContent = null;
+    currentSquare.textContent = '';
   }
   })
 
-  if(winner === null) {
+  if(!winner) {
     messageEl.textContent = "Currently: " + player() + "'s turn!"
   } else if (winner === 'T') {
     messageEl.textContent = `Players have tied!`;
   } else {
-    messageEl.textContent = "Congratualations, Player " + player() + " has won!"
+    messageEl.textContent = "Congratulations, Player " + player() + " has won!"
   }
 
   getWinner();
 }
 
 function handleClick(evt) {
-  if(!board[+(evt.target.id.replace('sq', ''))] === null)  {
+  let sqIdx = parseInt(evt.target.id.replace('sq', ''))
+  if(board[sqIdx] || winner) {
     return;
-  } else if (!winner === null) {
-    return;
-  } else {
-    board[+(evt.target.id.replace('sq', ''))] = turn;
   }
-
   turn *= -1;
+  board[sqIdx] = turn;
+  winner = getWinner();
   render();
 }
 
 function player() {
   let playerName;
   if (turn === 1) {
-    playerName = 'Player 1';
-  } else {
-    playerName = 'Player 2';
+    playerName = 'Player O';
+  } else if(turn === -1) {
+    playerName = 'Player X';
   }
   return playerName;
 }
 
 function getWinner() {
   for(let i = 0; i < winningCombos.length; i++) {
-    const combo = winningCombos[i];
-    const sq1 = board[combo[0]];
-    const sq2 = board[combo[1]];
-    const sq3 = board[combo[2]];
-    const winValue = Math.abs((sq1 + sq2 + sq3));
-    if (winValue === 3) {
-      winner = turn;
-    } else if (!board.includes(null)){
-      winner = 'T';
-    }
+    let sum = board[winningCombos[i][0]] + board[winningCombos[i][1]] + board[winningCombos[i][2]];
+
+    if (Math.abs(sum) === 3) return board[winningCombos[i][0]];
+  }
+
+  if(!board.includes(null)) {
+    return 'T';
+  } else {
+    return;
   }
 }
 
