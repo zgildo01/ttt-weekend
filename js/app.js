@@ -36,7 +36,7 @@ function init() {
   winner = null;
 
   resetBtnEl.removeAttribute("hidden");
-  startBtnEl.setAttribute("hidden");
+  startBtnEl.style.visiblity = 'hidden';
   render();
 }
 

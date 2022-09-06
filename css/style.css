@@ -39,3 +39,11 @@ div {
   height: 60px;
   width: 100px;
 }
+
+#start-button {
+  border: 5px solid black;
+  font-size: 25px;
+  cursor: pointer;
+  height: 60px;
+  width: 100px;
+}
