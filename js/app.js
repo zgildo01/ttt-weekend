@@ -25,17 +25,18 @@ const startBtnEl = document.querySelector("#start-button");
 squareEls.forEach(function(square) {
   square.addEventListener('click', handleClick)
 });
-
+startBtnEl.addEventListener('click', init);
 resetBtnEl.addEventListener('click', init);
 
 /*-------------------------------- Functions --------------------------------*/
-init();
 
 function init() {
   board = [null, null, null, null, null, null, null, null, null];
   turn = 1;
   winner = null;
 
+  resetBtnEl.removeAttribute("hidden");
+  startBtnEl.setAttribute("hidden");
   render();
 }
 
