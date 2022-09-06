@@ -19,6 +19,7 @@ let board, turn, winner;
 const squareEls = document.querySelectorAll('.boardSq');
 const messageEl = document.querySelector('#message');
 const resetBtnEl = document.querySelector('#reset-button');
+const startBtnEl = document.querySelector("#start-button");
 
 /*----------------------------- Event Listeners -----------------------------*/
 squareEls.forEach(function(square) {

@@ -5,6 +5,7 @@ body {
 		Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
     font-family: "Permanent Marker", cursive;
     text-align: center;
+    justify-content: center;
 }
 
 #board {
