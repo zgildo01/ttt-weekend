@@ -1,1 +1,1 @@
-# tic-tac-toe starter code
+Simple tic-tac-toe game
