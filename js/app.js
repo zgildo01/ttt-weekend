@@ -83,6 +83,7 @@ function checkWinner(){
 }
 
 function restartGame(){
+  restartBtn.setAttribute("style", "display: none;")
   currentPlayer = "X";
   options = ["", "", "", "", "", "", "", "", ""];
   statusText.textContent = `${currentPlayer}'s turn`;
