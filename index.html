@@ -9,21 +9,22 @@
 	<title>Tic Tac Toe</title>
 </head>
 <body>
-	<h1>Tic-Tac-Toe</h1>
-	<h2 id="message">Click start to play!</h2>
-
-	<section class="board">
-		<div id="sq0" class="boardSq"></div>
-		<div id="sq1" class="boardSq"></div>
-		<div id="sq2" class="boardSq"></div>
-		<div id="sq3" class="boardSq"></div>
-		<div id="sq4" class="boardSq"></div>
-		<div id="sq5" class="boardSq"></div>
-		<div id="sq6" class="boardSq"></div>
-		<div id="sq7" class="boardSq"></div>
-		<div id="sq8" class="boardSq"></div>
-	</section>
-	<button id="start-button">Start</button>
-	<button id="reset-button" hidden>Reset</button>
+	<div id="gameContainer">
+		<h1>Tic Tac Toe</h1>
+		<div id="cellContainer">
+				<div cellIndex="0" class="cell"></div>
+				<div cellIndex="1" class="cell"></div>
+				<div cellIndex="2" class="cell"></div>
+				<div cellIndex="3" class="cell"></div>
+				<div cellIndex="4" class="cell"></div>
+				<div cellIndex="5" class="cell"></div>
+				<div cellIndex="6" class="cell"></div>
+				<div cellIndex="7" class="cell"></div>
+				<div cellIndex="8" class="cell"></div>
+		</div>
+		<h2 id="statusText"></h2>
+		<button id="startBtn">Start</button>
+		<button id="restartBtn">Restart</button>
+	</div>
 </body>
 </html>
