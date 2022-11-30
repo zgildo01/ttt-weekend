@@ -25,9 +25,10 @@ startBtn.addEventListener("click", initializeGame)
 
 
 function initializeGame(){
-    cells.forEach(cell => cell.addEventListener("click", cellClicked));
-    statusText.textContent = `${currentPlayer}'s turn`;
-    running = true;
+
+  cells.forEach(cell => cell.addEventListener("click", cellClicked));
+  statusText.textContent = `${currentPlayer}'s turn`;
+  running = true;
 }
 
 function cellClicked(){
