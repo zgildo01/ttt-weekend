@@ -25,7 +25,7 @@ startBtn.addEventListener("click", initializeGame)
 
 
 function initializeGame(){
-
+  startBtn.setAttribute("style", "display: none")
   cells.forEach(cell => cell.addEventListener("click", cellClicked));
   statusText.textContent = `${currentPlayer}'s turn`;
   running = true;
@@ -71,6 +71,7 @@ function checkWinner(){
     if(roundWon){
       statusText.textContent = `${currentPlayer} wins!`;
       running = false;
+      restartBtn.setAttribute("style", "display: initial")
     }
     else if(!options.includes("")){
       statusText.textContent = `Draw!`;

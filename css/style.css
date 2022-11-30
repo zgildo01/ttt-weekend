@@ -7,6 +7,10 @@ body {
     text-align: center;
 }
 
+#restartBtn {
+  display: none;
+}
+
 .cell{
   width: 75px;
   height: 75px;
