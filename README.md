@@ -1,1 +1,1 @@
-Simple tic-tac-toe game
+Simple tic-tac-toe game that allows you to start whenever you choose!

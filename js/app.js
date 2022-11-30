@@ -76,6 +76,7 @@ function checkWinner(){
     else if(!options.includes("")){
       statusText.textContent = `Draw!`;
       running = false;
+      restartBtn.setAttribute("style", "display: initial")
     }
     else{
       changePlayer();
